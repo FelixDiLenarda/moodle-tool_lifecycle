@@ -36,6 +36,8 @@ defined('MOODLE_INTERNAL') || die();
 function tool_lifecycle_extend_navigation_course($navigation, $course, $context) {
     global $PAGE;
 
+    return null; // ISIS, MG, 17.12.2019
+
     // Only add this settings item on non-site course pages.
     if (!$PAGE->course || $PAGE->course->id == SITEID) {
         return null;
