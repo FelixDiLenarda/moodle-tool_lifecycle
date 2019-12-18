@@ -212,7 +212,8 @@ class email extends libbase {
      */
     private function parse_course_row_data($courseid) {
         $course = get_course($courseid);
-        return array($course->fullname);
+        $url = new \moodle_url('/course/view.php', ['id' => $courseid]);
+        return array(\html_writer::link($url, $course->fullname));
     }
 
     /**
