@@ -15,13 +15,12 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for check category step
+ * Lang strings for matching categories trigger
  *
- * @package    lifecyclestep_checkcategory
- * @copyright  2019 Martin Gauk, innoCampus, TU Berlin
+ * @package    lifecyclestep_resetuserdata
+ * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Check category step';
-
-$string['info'] = 'Checks that a course still resides in a category that was defined in the matching category or categoriesolderxyears trigger.';
+$string['pluginname'] = 'Benotung und Abgaben-löschen-Schritt';
+$string['resetuserdata_maximumresetspercron'] = 'Maximale Anzahl an Kursresets per cron';

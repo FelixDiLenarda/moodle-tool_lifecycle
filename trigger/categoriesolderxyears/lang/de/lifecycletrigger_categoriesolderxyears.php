@@ -15,13 +15,12 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for check category step
+ * Lang strings for matching categories trigger
  *
- * @package    lifecyclestep_checkcategory
- * @copyright  2019 Martin Gauk, innoCampus, TU Berlin
+ * @package    lifecycletrigger_categoriesolderxyears
+ * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Check category step';
-
-$string['info'] = 'Checks that a course still resides in a category that was defined in the matching category or categoriesolderxyears trigger.';
+$string['pluginname'] = 'Kurskategorie älter als X Jahre Trigger';
+$string['years'] = 'Triggert Kurse, welche sich in Kategorien befinden, die älter als X Jahre sind';

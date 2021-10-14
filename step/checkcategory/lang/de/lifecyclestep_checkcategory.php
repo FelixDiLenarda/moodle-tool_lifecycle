@@ -24,4 +24,4 @@
 
 $string['pluginname'] = 'Kategorie-Prüfen-Schritt';
 
-$string['info'] = 'Überprüft, ob sich der Kurs weiterhin in einer Kategorie befindet, die im Passende-Kategorie-Trigger definiert wurde.';
+$string['info'] = 'Überprüft, ob sich der Kurs weiterhin in einer Kategorie befindet, die im Passende-Kategorie-Trigger oder im Kurskategorie älter als X Jahre Trigger definiert wurde.';

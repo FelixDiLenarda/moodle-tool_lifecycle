@@ -15,13 +15,12 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for check category step
+ * Life Cycle Exclude Courseids Trigger
  *
- * @package    lifecyclestep_checkcategory
- * @copyright  2019 Martin Gauk, innoCampus, TU Berlin
+ * @package    lifecycletrigger_excludecourseids
+ * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Check category step';
-
-$string['info'] = 'Checks that a course still resides in a category that was defined in the matching category or categoriesolderxyears trigger.';
+$string['pluginname'] = 'Exclude Course-IDs trigger';
+$string['courseids_setting'] = 'Course-IDs for which the workflow should not be triggered. One Course-ID per line.';
