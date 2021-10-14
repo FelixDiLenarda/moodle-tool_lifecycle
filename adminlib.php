@@ -266,7 +266,7 @@ class admin_settings {
 
     /**
      * This is the entry point for this controller class.
-     * @param string $action Action string (see {@link action}).
+     * @param string $action Action string (see {@see action}).
      * @param int $workflowid Id of the workflow.
      * @throws \coding_exception
      * @throws \dml_exception
@@ -406,7 +406,8 @@ class workflow_settings {
             $steps = step_manager::get_step_types();
             echo '<span class="ml-1"></span>';
             echo $OUTPUT->single_select(new \moodle_url($PAGE->url,
-                array('action' => action::STEP_INSTANCE_FORM, 'sesskey' => sesskey(), 'workflowid' => $this->workflowid, 'class' => 'ml-1')),
+                array('action' => action::STEP_INSTANCE_FORM, 'sesskey' => sesskey(),
+                    'workflowid' => $this->workflowid, 'class' => 'ml-1')),
                 'stepname', $steps, '', array('' => get_string('add_new_step_instance', 'tool_lifecycle')));
         }
 

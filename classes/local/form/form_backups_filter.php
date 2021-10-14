@@ -15,25 +15,40 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines available settings_types.
+ * A moodle form for filtering the course backups table
+ *
  * @package    tool_lifecycle
- * @copyright  2017 Tobias Reischmann WWU
+ * @copyright  2021 Justus Dieckmann WWU
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace tool_lifecycle;
+namespace tool_lifecycle\local\form;
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once($CFG->libdir . '/formslib.php');
+
 /**
- * Defines available settings_types.
+ * A moodle form for filtering the course backups table
+ *
  * @package    tool_lifecycle
- * @copyright  2017 Tobias Reischmann WWU
+ * @copyright  2021 Justus Dieckmann WWU
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class settings_type {
+class form_backups_filter extends \moodleform {
 
-    /** @var string Represents the type for a step subplugin. */
-    const STEP = 'step';
-    /** @var string Represents the type for a trigger subplugin. */
-    const TRIGGER = 'trigger';
+    /**
+     * Defines forms elements
+     */
+    public function definition() {
+        $mform = $this->_form;
+
+        $mform->addElement('text', 'shortname', get_string('shortname'));
+        $mform->setType('shortname', PARAM_TEXT);
+
+        $mform->addElement('text', 'fullname', get_string('fullname'));
+        $mform->setType('fullname', PARAM_TEXT);
+
+        $this->add_action_buttons(true, get_string('apply', 'tool_lifecycle'));
+    }
+
 }

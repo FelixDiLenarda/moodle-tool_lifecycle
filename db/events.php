@@ -15,20 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Install script for lifecycle subplugin
+ * Event observer.
  *
- * @package lifecycletrigger_delayedcourses
-
- * @copyright  2017 Tobias Reischmann WWU
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   tool_lifecycle
+ * @copyright 2020 Justus Dieckmann WWU
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-use tool_lifecycle\local\manager\trigger_manager;
 
 defined('MOODLE_INTERNAL') || die();
 
-/**
- * Register delayed courses as initial workflow.
- */
-function xmldb_lifecycletrigger_delayedcourses_install() {
-    trigger_manager::register_workflow('delayedcourses');
-}
+$observers = array(
+        array(
+                'eventname' => 'core\event\course_deleted',
+                'callback' => 'tool_lifecycle\local\manager\process_manager::course_deletion_observed',
+        )
+);
