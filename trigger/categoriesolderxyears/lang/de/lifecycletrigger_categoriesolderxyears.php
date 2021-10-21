@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for matching categories trigger
+ * Lang strings for categoriesolderxyears trigger
  *
  * @package    lifecycletrigger_categoriesolderxyears
  * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
@@ -23,4 +23,4 @@
  */
 
 $string['pluginname'] = 'Kurskategorie älter als X Jahre Trigger';
-$string['years'] = 'Triggert Kurse, welche sich in Kategorien befinden, die älter als X Jahre sind';
+$string['years'] = 'Triggert Kurse, welche sich in Unterkategorien des Archivbereichs befinden und älter als X Jahre sind';

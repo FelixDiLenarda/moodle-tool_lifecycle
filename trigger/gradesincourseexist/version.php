@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Life Cycle Matching Categories Trigger
+ * Life Cycle Grades In Course Exist Trigger
  *
  * @package    lifecycletrigger_gradesincourseexist
  * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin

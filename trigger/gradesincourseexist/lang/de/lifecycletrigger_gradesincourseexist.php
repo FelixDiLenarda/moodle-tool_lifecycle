@@ -15,12 +15,12 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for matching categories trigger
+ * Lang strings for grades in course exist trigger
  *
  * @package    lifecycletrigger_gradesincourseexist
  * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Enthält der Kurs Bewertungen ';
+$string['pluginname'] = 'Enthält der Kurs Bewertungen? ';
 

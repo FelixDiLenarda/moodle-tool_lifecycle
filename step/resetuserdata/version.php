@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Life Cycle Check Categories Step.
+ * Life Cycle Reset Userdata Step.
  *
  * @package    lifecyclestep_resetuserdata
  * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin

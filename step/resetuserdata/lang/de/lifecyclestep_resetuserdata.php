@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for matching categories trigger
+ * Lang strings for resetuserdata step
  *
  * @package    lifecyclestep_resetuserdata
  * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin

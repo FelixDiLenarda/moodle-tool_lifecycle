@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for matching categories trigger
+ * Lang strings for resetuserdata step
  *
  * @package    lifecyclestep_resetuserdata
  * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
@@ -23,4 +23,4 @@
  */
 
 $string['pluginname'] = 'Delete grades and submissions step';
-$string['resetuserdata_maximumresetspercron'] = 'Maximum number of courses reseted per cron';
+$string['resetuserdata_maximumresetspercron'] = 'Maximum number of courseresets per cron';

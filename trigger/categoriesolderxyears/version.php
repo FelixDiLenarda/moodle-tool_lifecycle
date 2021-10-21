@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Life Cycle Matching Categories Trigger
+ * Life Cycle Categories Older X Years Trigger
  *
  * @package    lifecycletrigger_categoriesolderxyears
  * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
