@@ -55,6 +55,8 @@ class resetuserdata extends libbase {
      * @throws \dml_exception
      */
     public function process_course($processid, $instanceid, $course) {
+        global $DB;
+
         if (self::$numberofresets >= settings_manager::get_settings(
                 $instanceid, settings_type::STEP)['maximumresetspercron']) {
             return step_response::waiting(); // Wait with further resets til the next cron run.
@@ -67,19 +69,27 @@ class resetuserdata extends libbase {
         $dataquiz->reset_quiz_attempts = true;
         $dataquiz->reset_quiz_user_overrides = true;
         $dataquiz->reset_quiz_group_overrides = true;
+        $dataquiz->timeshift = 0;
         quiz_reset_userdata($dataquiz);  //mod/quiz/lib.php
 
         // purge assignment data
         $dataassign = new \stdClass();
         $dataassign->courseid = $course->id;
         $dataassign->reset_assign_submissions = true;
-        $dataassign->reset_gradebook_grades = true;
         $dataassign->reset_assign_user_overrides = true;
         $dataassign->reset_assign_group_overrides = true;
+        $dataassign->timeshift = 0;
         assign_reset_userdata($dataassign); //mod/assign/lib.php
 
         //purge coursegrade data
         grade_course_reset($course->id); //lib/gradelib.php
+
+        //purge grade_grades_history
+        $where = "id in (
+            SELECT ggh.id FROM {grade_grades_history} ggh
+            INNER JOIN {grade_items} gi ON gi.id = ggh.itemid
+            WHERE gi.courseid = :courseid )";
+        $DB->delete_records_select('grade_grades_history', "$where", [ 'courseid' => $course->id ]);
 
         self::$numberofresets++;
         return step_response::proceed();
