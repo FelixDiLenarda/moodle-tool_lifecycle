@@ -15,12 +15,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for grades in course exist trigger
+ * Lang strings for time delay trigger
  *
- * @package    lifecycletrigger_gradesincourseexist
- * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
+ * @package    lifecycletrigger_timedelay
+ * @copyright  2022 Felix Di Lnearda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Bewertungen vorhanden - Trigger ';
+$string['pluginname'] = 'Zeitabstand - Trigger';
 
+$string['delay'] = 'Zeit seit eingestellter Datumsoption, bis ein Prozess gestartet wird';
+$string['delay_help'] = 'Der Trigger wird ausgeführt, falls die Zeit, die seit der eingestellten Datumsoption des Kurses vergangen ist, größer ist, als der angegebene Zeitraum.';
+$string['dbtimefield_noselection'] = 'Sie müssen ein Feld wählen';
+$string['dbtimefield'] = 'Wählen Sie ein Zeitfeld aus';

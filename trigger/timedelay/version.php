@@ -15,12 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for grades in course exist trigger
+ * Life Cycle timde delay Trigger
  *
- * @package    lifecycletrigger_gradesincourseexist
- * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
+ * @package lifecycletrigger_timedelay
+ * @copyright  2022 Felix Di Lenarda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Bewertungen vorhanden - Trigger ';
+defined('MOODLE_INTERNAL') || die;
 
+$plugin->version  = 2022031000;
+$plugin->component = 'lifecycletrigger_timedelay';

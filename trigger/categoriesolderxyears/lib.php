@@ -92,6 +92,7 @@ class categoriesolderxyears extends base_automatic {
                 $categorynames[] = "WS" . ($x - 1) . "/" . $x;
             }
         }
+        # TODO entfernen:
         mtrace("Included categories: --------------------------------------------------");
         mtrace(var_dump($categorynames));
         mtrace("-----------------------------------------------------------------------");

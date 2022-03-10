@@ -22,5 +22,5 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Exclude Course-IDs trigger';
+$string['pluginname'] = 'Exclude Course-IDs - Trigger';
 $string['courseids_setting'] = 'Course-IDs for which the workflow should not be triggered. One Course-ID per line.';

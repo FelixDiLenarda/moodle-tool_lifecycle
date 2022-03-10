@@ -15,12 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for grades in course exist trigger
+ * Lang strings for course has no roleassignments trigger
  *
- * @package    lifecycletrigger_gradesincourseexist
+ * @package    lifecycletrigger_coursehasnoroleassignments
  * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Bewertungen vorhanden - Trigger ';
+$string['pluginname'] = 'Teilnehmer-Rollen vorhanden?- (anti) Trigger';
+$string['responsibleroles'] = 'Wähle Teilnehmer-Rollen';
+$string['responsibleroles_help'] = 'Wähle die Rollen von welchen eine im jeweiligen Kurs vorhanden sein müssen damit dieser nicht getriggert wird. Kurse welche keine der angegeben Rollen enthalten, werden getriggert.';
 

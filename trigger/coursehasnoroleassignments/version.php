@@ -15,12 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for grades in course exist trigger
+ * Life Cycle course has no roleassignments trigger
  *
- * @package    lifecycletrigger_gradesincourseexist
+ * @package    lifecycletrigger_coursehasnoroleassignments
  * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Bewertungen vorhanden - Trigger ';
+defined('MOODLE_INTERNAL') || die;
 
+$plugin->version  = 2022031000;
+$plugin->component = 'lifecycletrigger_coursehasnoroleassignments';

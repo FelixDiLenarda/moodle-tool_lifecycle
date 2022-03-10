@@ -25,3 +25,4 @@
 $string['pluginname'] = 'Check category step';
 
 $string['info'] = 'Checks that a course still resides in a category that was defined in the matching category or categoriesolderxyears trigger.';
+

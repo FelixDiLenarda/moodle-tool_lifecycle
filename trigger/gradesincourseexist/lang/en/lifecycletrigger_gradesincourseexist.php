@@ -22,4 +22,4 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Are gradings existant in the course? ';
+$string['pluginname'] = 'Gradings existant - Trigger';

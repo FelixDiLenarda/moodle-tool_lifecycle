@@ -15,12 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for grades in course exist trigger
+ * Lang strings for check trigger step
  *
- * @package    lifecycletrigger_gradesincourseexist
- * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
+ * @package    lifecyclestep_checktrigger
+ * @copyright  2022 Felix Di Lnearda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Bewertungen vorhanden - Trigger ';
+$string['pluginname'] = 'Check trigger step';
+
+$string['info'] = 'Verifies that a triggered course still meets the prerequisites of the specific trigger.';
+$string['availabletriggers'] = 'Available triggers';
 

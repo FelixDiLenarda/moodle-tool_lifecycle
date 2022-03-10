@@ -15,12 +15,17 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for grades in course exist trigger
+ * Life Cycle Check triggers Step.
  *
- * @package    lifecycletrigger_gradesincourseexist
- * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
+ * @package    lifecyclestep_checktrigger
+ * @copyright  2022 Felix Di Lnearda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Bewertungen vorhanden - Trigger ';
+defined('MOODLE_INTERNAL') || die;
 
+$plugin->version  = 2022013100;
+$plugin->component = 'lifecyclestep_checktrigger';
+$plugin->dependencies = [
+    'lifecycletrigger_matchingcategories' => 2019121300,
+];

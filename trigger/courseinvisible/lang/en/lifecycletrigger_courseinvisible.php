@@ -15,12 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang strings for grades in course exist trigger
+ * Lang strings for courseinvisible trigger
  *
- * @package    lifecycletrigger_gradesincourseexist
+ * @package    lifecycletrigger_courseinvisible
  * @copyright  2021 Felix Di Lenarda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Bewertungen vorhanden - Trigger ';
-
+$string['pluginname'] = 'Course invisible - Trigger ';
