@@ -63,7 +63,7 @@ class gradesincourseexist extends base_automatic {
         $where = "{course}.id IN (SELECT DISTINCT c.id FROM {course} c
             INNER JOIN {grade_items} gi ON c.id = gi.courseid
             INNER JOIN {grade_grades} gg ON gi.id = gg.itemid
-            WHERE gg.finalgrade IS NOT NULL)";
+            WHERE gg.finalgrade IS NOT NULL AND (gi.itemmodule = 'assign' OR gi.itemmodule = 'quiz'))";
         $params = array();
         return array($where, $params);
     }

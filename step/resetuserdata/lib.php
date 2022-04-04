@@ -61,7 +61,7 @@ class resetuserdata extends libbase {
                 $instanceid, settings_type::STEP)['maximumresetspercron']) {
             return step_response::waiting(); // Wait with further resets til the next cron run.
         }
-        mtrace("Userdata reset for course: " . $course->fullname . "\n");
+        mtrace("Userdata reset for course: " . $course->id . " : " . $course->fullname . "\n");
 
         // purge quizdata
         $dataquiz = new \stdClass();
