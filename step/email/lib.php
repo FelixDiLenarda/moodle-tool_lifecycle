@@ -154,7 +154,7 @@ class email extends libbase {
         $patterns [] = '##isis-archive-courses##';
         $courses = $mailentries;
         $coursesstring = '';
-        $coursesstring .= $this->parse_course(array_pop($courses)->courseid);
+        $coursesstring .= $this->parse_course_isis(array_pop($courses)->courseid);
         foreach ($courses as $entry) {
             $coursesstring .= "\n" . $this->parse_course_isis($entry->courseid);
         }
@@ -170,7 +170,6 @@ class email extends libbase {
         $coursestable->data = $coursestabledata;
         $replacements [] = \html_writer::table($coursestable);
 
-        return str_ireplace($patterns, $replacements, $strings);
 
         // Replaces firstname of the user.
         $patterns [] = '##firstname##';
@@ -234,10 +233,9 @@ class email extends libbase {
      */
     private function parse_course_isis($courseid) {
         $course = get_course($courseid);
+        $url = new \moodle_url('/local/assessment_archive/index.php', ['courseid' => $courseid]);
         $result = $course->fullname . "\n";
-        // TODO: absoluter link oder gibts da ne funktion für?
-        // funktioniert das mit         $url = new \moodle_url('/local/assessment_archive/index.php', ['courseid' => $courseid]);
-        $result .= new \moodle_url('/local/assessment_archive/index.php', ['courseid' => $courseid]);
+        $result .= $url->out(false);
         return $result;
     }
 
