@@ -150,6 +150,28 @@ class email extends libbase {
         $patterns = array();
         $replacements = array();
 
+        // ISIS: Replacements 6.4.2022
+        $patterns [] = '##isis-archive-courses##';
+        $courses = $mailentries;
+        $coursesstring = '';
+        $coursesstring .= $this->parse_course(array_pop($courses)->courseid);
+        foreach ($courses as $entry) {
+            $coursesstring .= "\n" . $this->parse_course_isis($entry->courseid);
+        }
+        $replacements [] = $coursesstring;
+
+        $patterns [] = '##isis-archive-courses-html##';
+        $courses = $mailentries;
+        $coursestabledata = array();
+        foreach ($courses as $entry) {
+            $coursestabledata[$entry->courseid] = $this->parse_course_row_data_isis($entry->courseid);
+        }
+        $coursestable = new \html_table();
+        $coursestable->data = $coursestabledata;
+        $replacements [] = \html_writer::table($coursestable);
+
+        return str_ireplace($patterns, $replacements, $strings);
+
         // Replaces firstname of the user.
         $patterns [] = '##firstname##';
         $replacements [] = $user->firstname;
@@ -205,6 +227,21 @@ class email extends libbase {
     }
 
     /**
+     * Parses a course for the non html format.
+     * @param int $courseid id of the course
+     * @return string
+     * @throws \dml_exception
+     */
+    private function parse_course_isis($courseid) {
+        $course = get_course($courseid);
+        $result = $course->fullname . "\n";
+        // TODO: absoluter link oder gibts da ne funktion für?
+        // funktioniert das mit         $url = new \moodle_url('/local/assessment_archive/index.php', ['courseid' => $courseid]);
+        $result .= new \moodle_url('/local/assessment_archive/index.php', ['courseid' => $courseid]);
+        return $result;
+    }
+
+    /**
      * Parses a course for the html format.
      * @param int $courseid id of the course
      * @return array column of a course
@@ -213,6 +250,18 @@ class email extends libbase {
     private function parse_course_row_data($courseid) {
         $course = get_course($courseid);
         $url = new \moodle_url('/course/view.php', ['id' => $courseid]);
+        return array(\html_writer::link($url, $course->fullname));
+    }
+
+    /**
+     * Parses a course for the html format.
+     * @param int $courseid id of the course
+     * @return array column of a course
+     * @throws \dml_exception
+     */
+    private function parse_course_row_data_isis($courseid) {
+        $course = get_course($courseid);
+        $url = new \moodle_url('/local/assessment_archive/index.php', ['courseid' => $courseid]);
         return array(\html_writer::link($url, $course->fullname));
     }
 
