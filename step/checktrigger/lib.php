@@ -103,7 +103,9 @@ class checktrigger extends libbase {
                     return step_response::rollback();
                 }
             }
-
+            else {
+                throw new \moodle_exception('The following Trigger to check was not found in the workflow: \''. $triggertocheck . '\' WORKFLOW ABORTED');
+            }
         }
     }
 
