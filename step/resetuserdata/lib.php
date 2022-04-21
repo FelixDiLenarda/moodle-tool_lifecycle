@@ -70,6 +70,7 @@ class resetuserdata extends libbase {
         $dataquiz->reset_quiz_user_overrides = true;
         $dataquiz->reset_quiz_group_overrides = true;
         $dataquiz->timeshift = 0;
+        $dataquiz->reset_gradebook_grades = true;
         quiz_reset_userdata($dataquiz);  //mod/quiz/lib.php
 
         // purge assignment data
@@ -79,6 +80,7 @@ class resetuserdata extends libbase {
         $dataassign->reset_assign_user_overrides = true;
         $dataassign->reset_assign_group_overrides = true;
         $dataassign->timeshift = 0;
+        $dataassign->reset_gradebook_grades = true;
         assign_reset_userdata($dataassign); //mod/assign/lib.php
 
         //purge coursegrade data
@@ -137,8 +139,8 @@ class resetuserdata extends libbase {
     public function extend_add_instance_form_definition($mform) {
         $elementname = 'maximumresetspercron';
         $mform->addElement('text', $elementname, get_string('resetuserdata_maximumresetspercron', 'lifecyclestep_resetuserdata'));
+        $mform->addHelpButton($elementname, 'resetuserdata_maximumresetspercron', 'lifecyclestep_resetuserdata');
         $mform->setType($elementname, PARAM_INT);
         $mform->setDefault($elementname, 10);
     }
-
 }

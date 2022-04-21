@@ -24,6 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version  = 2021101200;
+$plugin->version  = 2022041200;
 $plugin->component = 'lifecyclestep_resetuserdata';
 

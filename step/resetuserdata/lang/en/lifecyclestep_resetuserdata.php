@@ -24,3 +24,4 @@
 
 $string['pluginname'] = 'Delete grades and submissions step';
 $string['resetuserdata_maximumresetspercron'] = 'Maximum number of courseresets per cron';
+$string['resetuserdata_maximumresetspercron_help'] = '"quiz" and "assign"-activity data is wiped from courses. Futhermore gradings and grading history are deleted for the triggered courses.';

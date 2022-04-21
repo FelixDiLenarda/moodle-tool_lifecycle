@@ -24,3 +24,5 @@
 
 $string['pluginname'] = 'Benotung und Abgaben-löschen-Schritt';
 $string['resetuserdata_maximumresetspercron'] = 'Maximale Anzahl an Kursresets per cron';
+$string['resetuserdata_maximumresetspercron_help'] = 'Hier wird die maximale Anzahl an Kursresets per cron angegeben. Die Kurse werden von "quiz" sowie "assign"-Aktivitätsdaten bereinigt. Ausserdem werden Bewertungen im Kurs und in der Bewertungshistorie gelöscht';
+
