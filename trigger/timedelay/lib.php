@@ -109,7 +109,6 @@ class timedelay extends base_automatic {
         $mform->addElement('autocomplete', 'dbtimefield',
             get_string('dbtimefield', 'lifecycletrigger_timedelay'),
             $rolenames, $options);
-        #$mform->addHelpButton('dbtimefield', 'responsibleroles', 'lifecycletrigger_byrole');
         $mform->setType('dbtimefield', PARAM_ALPHA);
         $mform->addRule('dbtimefield', 'Erforderlich', 'required');
     }
