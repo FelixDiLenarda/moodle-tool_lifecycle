@@ -66,7 +66,7 @@ class categoriesolderxyears extends base_automatic {
     static public function get_category_names($triggerid) {
         // get setting for how many years in the past the trigger should start to trigger and convert in year
         $catsolderthanyears = settings_manager::get_settings($triggerid, settings_type::TRIGGER)['years'];
-        mtrace("\n Setting: only courses older " . $catsolderthanyears . " years \n");
+        // mtrace("\n Setting: only courses older " . $catsolderthanyears . " years \n");
         $xyearago = date("y")-$catsolderthanyears;
 
         // look max five years back in time because the courses are deleted after 5 yers anyway
@@ -92,10 +92,6 @@ class categoriesolderxyears extends base_automatic {
                 $categorynames[] = "WS" . ($x - 1) . "/" . $x;
             }
         }
-        # TODO entfernen:
-        mtrace("Included categories: --------------------------------------------------");
-        mtrace(var_dump($categorynames));
-        mtrace("-----------------------------------------------------------------------");
 
         return $categorynames;
     }
@@ -122,7 +118,7 @@ class categoriesolderxyears extends base_automatic {
                 $wherecats[] = $cat->id;
             }
         }
-
+        // TODO: get_in_or_equal nimmt keine leeren arrays -> falls keine cats gefunden wurden bleibt $insql leer!?
         list($insql, $inparams) = $DB->get_in_or_equal($wherecats, SQL_PARAMS_NAMED);
         $where = "{course}.category {$insql}";
         return array($where, $inparams);
