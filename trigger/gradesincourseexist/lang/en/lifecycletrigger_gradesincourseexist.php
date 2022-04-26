@@ -23,3 +23,5 @@
  */
 
 $string['pluginname'] = 'Gradings existant - Trigger';
+$string['info'] = 'The "Gradings existant - Trigger" triggers courses which have gradings from "quiz" or "assignment"-activities';
+

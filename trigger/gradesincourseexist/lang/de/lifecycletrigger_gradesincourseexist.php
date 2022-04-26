@@ -23,4 +23,5 @@
  */
 
 $string['pluginname'] = 'Bewertungen vorhanden - Trigger ';
+$string['info'] = 'Der "Bewertungen vorhanden - Trigger" triggert nur Kurse, welche Bewertungen von "quiz" oder "assignment"-Aktivitäten enthalten';
 
