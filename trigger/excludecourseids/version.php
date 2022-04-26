@@ -24,5 +24,5 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version  = 2022031000;
+$plugin->version  = 2022041200;
 $plugin->component = 'lifecycletrigger_excludecourseids';

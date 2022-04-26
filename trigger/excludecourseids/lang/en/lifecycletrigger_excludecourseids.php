@@ -23,4 +23,4 @@
  */
 
 $string['pluginname'] = 'Exclude Course-IDs - Trigger';
-$string['courseids_setting'] = 'Course-IDs for which the workflow should not be triggered. One Course-ID per line.';
+$string['courseids_setting'] = 'Course-IDs for which the workflow is not triggered. One Course-ID per line.';
