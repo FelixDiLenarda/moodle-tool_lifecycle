@@ -115,9 +115,9 @@ class coursehasnoroleassignments extends base_automatic {
             'multiple' => true,
         );
         $mform->addElement('autocomplete', 'roles',
-            get_string('responsibleroles', 'lifecycletrigger_byrole'),
+            get_string('responsibleroles', 'lifecycletrigger_coursehasnoroleassignments'),
             $rolenames, $options);
-        $mform->addHelpButton('roles', 'responsibleroles', 'lifecycletrigger_byrole');
+        $mform->addHelpButton('roles', 'responsibleroles', 'lifecycletrigger_coursehasnoroleassignments');
         $mform->setType('roles', PARAM_SEQUENCE);
         $mform->addRule('roles', 'Test', 'required');
     }

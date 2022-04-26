@@ -24,5 +24,5 @@
 
 $string['pluginname'] = 'Particicipant-roles - Trigger';
 $string['responsibleroles'] = 'Responsible Roles in courses';
-$string['responsibleroles_help'] = 'Select the roles from which one role has to bethat have to be present within the course so it is NOT triggered. If none of the roles are present in the course it is triggered.';
+$string['responsibleroles_help'] = 'Select the roles, from which one role has to be present within the course so it is NOT triggered. If NONE of the given roles are present in the course, it is triggered.';
 

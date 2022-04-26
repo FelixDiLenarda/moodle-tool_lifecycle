@@ -24,5 +24,5 @@
 
 $string['pluginname'] = 'Teilnehmer-Rollen vorhanden?- (anti) Trigger';
 $string['responsibleroles'] = 'Wähle Teilnehmer-Rollen';
-$string['responsibleroles_help'] = 'Wähle die Rollen von welchen eine im jeweiligen Kurs vorhanden sein müssen damit dieser nicht getriggert wird. Kurse welche keine der angegeben Rollen enthalten, werden getriggert.';
+$string['responsibleroles_help'] = 'Wähle die Rollen, von welchen eine im jeweiligen Kurs vorhanden sein muss, damit der Kurs nicht getriggert wird. Kurse welche KEINE der angegeben Rollen enthalten, werden getriggert.';
 
