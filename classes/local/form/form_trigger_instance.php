@@ -179,7 +179,8 @@ class form_trigger_instance extends \moodleform {
         }
 
         // Insert the subplugin specific settings.
-        if (isset($this->lib) && !empty($this->lib->instance_settings())) {
+        // ISIS 25.04. make adding Infoelements after dat possible even if there are no settings
+        if (isset($this->lib)) {
             $this->lib->extend_add_instance_form_definition_after_data($mform, $this->settings);
         }
 

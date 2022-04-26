@@ -74,4 +74,15 @@ class courseinvisible extends base_automatic {
         return 'courseinvisible';
     }
 
+    /**
+     * This method can be overriden, to add form elements to the form_step_instance.
+     * It is called in definition().
+     * @param \MoodleQuickForm $mform
+     * @throws \coding_exception
+     */
+    public function extend_add_instance_form_definition_after_data($mform, $settings) {
+        //adding Triggerinfo
+        $mform->addElement('html', get_string('info', 'lifecycletrigger_courseinvisible'));
+    }
+
 }

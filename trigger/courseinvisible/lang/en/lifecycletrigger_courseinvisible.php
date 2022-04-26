@@ -23,3 +23,5 @@
  */
 
 $string['pluginname'] = 'Course invisible - Trigger ';
+$string['info'] = 'The "Course invisible - Trigger" triggers only courses where the "Course visibility"-setting is on "hide"';
+

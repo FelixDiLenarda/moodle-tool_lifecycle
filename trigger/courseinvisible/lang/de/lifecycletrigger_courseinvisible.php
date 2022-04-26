@@ -23,4 +23,5 @@
  */
 
 $string['pluginname'] = 'Kurs unsichtbar - Trigger';
+$string['info'] = 'Der "Kurs unsichtbar - Trigger", triggert nur Kurse welche die "Kurssichtbarkeit"-Einstellung auf "Verbergen" gestellt haben';
 
