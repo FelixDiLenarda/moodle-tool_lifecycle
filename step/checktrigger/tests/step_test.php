@@ -49,17 +49,6 @@ require_once(__DIR__ . '/generator/lib.php');
  */
 class tool_lifecycle_step_checktrigger_testcase extends \advanced_testcase
 {
-
-    /** @var trigger_subplugin $excludetrigger Trigger instance that excludes a category. */
-    private $excludetrigger;
-    /** @var trigger_subplugin $includetrigger Trigger instance that includes a category. */
-    private $includetrigger;
-
-    /** @var \core_course_category $category A category. */
-    private $category;
-    /** @var \core_course_category $category A child category. */
-    private $childcategory;
-
     /** @var processor $processor Instance of the lifecycle processor */
     private $processor;
 
@@ -71,8 +60,6 @@ class tool_lifecycle_step_checktrigger_testcase extends \advanced_testcase
     {
         $this->resetAfterTest(true);
         $this->setAdminUser();
-
-
         $this->processor = new processor();
     }
 
@@ -107,10 +94,6 @@ class tool_lifecycle_step_checktrigger_testcase extends \advanced_testcase
         // both categories are ECLUDED
         $settings->exclude = true;
         settings_manager::save_settings($trigger->id, settings_type::TRIGGER, $trigger->subpluginname, $settings);
-        //set Step settings
-        $settings = new stdClass();
-        $settings->triggertocheck = 'categories';
-        settings_manager::save_settings($step->id, settings_type::STEP, $step->subpluginname, $settings);
 
         // Run the trigger and make sure none of the courses is triggered this time -> Recordset must be empty -> no step is processed
         $recordset = $this->processor->get_course_recordset([$trigger], []);
@@ -227,12 +210,6 @@ class tool_lifecycle_step_checktrigger_testcase extends \advanced_testcase
         $settings = new stdClass();
         $settings->years = $data['years'];
         settings_manager::save_settings($trigger->id, settings_type::TRIGGER, $trigger->subpluginname, $settings);
-
-        //TODO: diesen part auslagern in checktrigger_generator?
-        //set Step settings
-        $settings = new stdClass();
-        $settings->triggertocheck = 'categoriesolderxyears';
-        settings_manager::save_settings($step->id, settings_type::STEP, $step->subpluginname, $settings);
 
         // Run the trigger and make sure none of the courses is triggered this time -> Recordset must be empty -> no step is processed
         $recordset = $this->processor->get_course_recordset([$trigger], []);

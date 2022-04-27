@@ -27,9 +27,11 @@ defined('MOODLE_INTERNAL') || die();
 use tool_lifecycle\local\entity\trigger_subplugin;
 use tool_lifecycle\local\entity\step_subplugin;
 use tool_lifecycle\local\entity\workflow;
+use tool_lifecycle\local\manager\settings_manager;
 use tool_lifecycle\local\manager\step_manager;
 use tool_lifecycle\local\manager\trigger_manager;
 use tool_lifecycle\local\manager\workflow_manager;
+use tool_lifecycle\settings_type;
 
 /**
  * lifecyclestep_checktrigger generator tests
@@ -68,7 +70,10 @@ class tool_lifecycle_step_checktrigger_generator extends testing_module_generato
         $record->workflowid = $workflow->id;
         $step = step_subplugin::from_record($record);
         step_manager::insert_or_update($step);
-        // Create process
+        // Set 'checktrigger'-Step settings
+        $settings = new stdClass();
+        $settings->triggertocheck = 'categoriesolderxyears';
+        settings_manager::save_settings($step->id, settings_type::STEP, $step->subpluginname, $settings);
 
         return array($trigger, $step);
     }
