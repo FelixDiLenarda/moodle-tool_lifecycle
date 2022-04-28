@@ -63,6 +63,12 @@ class tool_lifecycle_step_checktrigger_generator extends testing_module_generato
         $record->workflowid = $workflow->id;
         $trigger = trigger_subplugin::from_record($record);
         trigger_manager::insert_or_update($trigger);
+        // Set trigger settings
+        $settings = new stdClass();
+        foreach($data['settings'] as $key => $value) {
+            $settings->$key = $value;
+        }
+        settings_manager::save_settings($trigger->id, settings_type::TRIGGER, $trigger->subpluginname, $settings);
         // Create 'checktrigger'-Step
         $record = new stdClass();
         $record->subpluginname = 'checktrigger';
@@ -72,7 +78,7 @@ class tool_lifecycle_step_checktrigger_generator extends testing_module_generato
         step_manager::insert_or_update($step);
         // Set 'checktrigger'-Step settings
         $settings = new stdClass();
-        $settings->triggertocheck = 'categoriesolderxyears';
+        $settings->triggertocheck = $data['triggersubpluginname'];
         settings_manager::save_settings($step->id, settings_type::STEP, $step->subpluginname, $settings);
 
         return array($trigger, $step);
