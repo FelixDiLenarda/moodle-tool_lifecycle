@@ -18,7 +18,7 @@
  * Step subplugin to check that a course still resides in a category.
  *
  * @package    lifecyclestep_checkcategory
- * @copyright  2019 Martin Gauk, innoCampus, TU Berlin
+ * @copyright  2019 Martin Gauk, Felix Di Lenarda, innoCampus, TU Berlin
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 namespace tool_lifecycle\step;
@@ -33,6 +33,8 @@ use tool_lifecycle\settings_type;
 defined('MOODLE_INTERNAL') || die();
 require_once(__DIR__ . '/../lib.php');
 require_once(__DIR__ . '/../../trigger/matchingcategories/lib.php');
+require_once(__DIR__ . '/../../trigger/categoriesolderxyears/lib.php');
+
 
 /**
  * Class which implements the basic methods necessary for a cleanyp courses trigger subplugin
@@ -44,7 +46,7 @@ require_once(__DIR__ . '/../../trigger/matchingcategories/lib.php');
 class checkcategory extends libbase {
 
     /**
-     * Get the category names from the matching categories trigger plugin.
+     * Get the category names from the matching trigger plugin.
      *
      * @param int $processid
      * @return string[]
@@ -63,6 +65,11 @@ class checkcategory extends libbase {
         foreach ($triggers as $trigger) {
             if ($trigger->subpluginname === 'matchingcategories') {
                 $cats = \tool_lifecycle\trigger\matchingcategories::get_category_names($trigger->id);
+                $cached[$workflowid] = $cats;
+                return $cats;
+            } elseif ($trigger->subpluginname === 'categoriesolderxyears') {
+                mtrace("Check if course is still in the right category: \n");
+                $cats = \tool_lifecycle\trigger\categoriesolderxyears::get_category_names($trigger->id);
                 $cached[$workflowid] = $cats;
                 return $cats;
             }

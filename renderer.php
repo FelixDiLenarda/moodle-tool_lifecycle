@@ -21,7 +21,6 @@
  * @copyright  2017 Tobias Reischmann WWU
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Renderer for life cycle
@@ -36,8 +35,7 @@ class tool_lifecycle_renderer extends plugin_renderer_base {
      * Write the page footer
      */
     public function footer() {
-        global $OUTPUT;
-        echo $OUTPUT->footer();
+        echo $this->output->footer();
     }
 
     /**
@@ -46,12 +44,11 @@ class tool_lifecycle_renderer extends plugin_renderer_base {
      * @param string $title optional page title.
      */
     public function header($title = null) {
-        global $OUTPUT, $PAGE;
-        echo $OUTPUT->header();
+        echo $this->output->header();
         if ($title) {
-            echo $OUTPUT->heading($title);
+            echo $this->output->heading($title);
         } else {
-            echo $OUTPUT->heading($PAGE->heading);
+            echo $this->output->heading($this->page->heading);
         }
     }
 

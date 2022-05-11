@@ -24,6 +24,7 @@
  */
 namespace tool_lifecycle\step;
 
+use tool_lifecycle\local\entity\process;
 use tool_lifecycle\local\manager\step_manager;
 use tool_lifecycle\local\response\step_response;
 
@@ -50,7 +51,7 @@ abstract class libbase {
      * @param mixed $course to be processed.
      * @return step_response
      */
-    public abstract function process_course($processid, $instanceid, $course);
+    abstract public function process_course($processid, $instanceid, $course);
 
     /**
      * Processes the course in status waiting and returns a repsonse.
@@ -96,7 +97,7 @@ abstract class libbase {
      * The return value should be equivalent with the name of the subplugin folder.
      * @return string technical name of the subplugin
      */
-    public abstract function get_subpluginname();
+    abstract public function get_subpluginname();
 
     /**
      * Defines which settings each instance of the subplugin offers for the user to define.
@@ -104,6 +105,16 @@ abstract class libbase {
      */
     public function instance_settings() {
         return array();
+    }
+
+    /**
+     * Is called when a setting is changed after a workflow is activated.
+     * @param string $settingname name of the setting
+     * @param mixed $newvalue the new value
+     * @param mixed $oldvalue the old value
+     */
+    public function on_setting_changed($settingname, $newvalue, $oldvalue) {
+
     }
 
     /**
@@ -123,6 +134,14 @@ abstract class libbase {
     public function extend_add_instance_form_definition_after_data($mform, $settings) {
     }
 
+    /**
+     * This method can be overridden. It is called when a course and the
+     * corresponding process get deleted.
+     * @param process $process the process that was aborted.
+     */
+    public function abort_course($process) {
+    }
+
 }
 
 /**
@@ -140,14 +159,19 @@ class instance_setting {
     /** @var string param type of the setting, e.g. PARAM_INT */
     public $paramtype;
 
+    /** @var bool if editable after activation */
+    public $editable;
+
     /**
      * Create a local settings object.
      * @param string $name name of the setting
      * @param string $paramtype param type. Used for cleansing and parsing, e.g. PARAM_INT.
+     * @param bool $editable if setting is editable after activation
      */
-    public function __construct($name, $paramtype) {
+    public function __construct(string $name, string $paramtype, bool $editable = false) {
         $this->name = $name;
         $this->paramtype = $paramtype;
+        $this->editable = $editable;
     }
 
 }

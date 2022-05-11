@@ -26,5 +26,6 @@ $string['pluginname'] = 'Bestimmtes Datum - Trigger';
 
 $string['dates'] = 'Daten, an denen der Workflow ausgeführt werden soll.';
 $string['dates_desc'] = 'Ein Datum pro Zeile in dem Format Tag.Monat';
+$string['dates_desc_help'] = 'One date per line for example 04.08 for 4th of August. If you are putting todays date it will be triggered';
 $string['timelastrun'] = 'Datum, an dem der Trigger zuletzt ausgeführt wurde.';
 $string['dates_not_parseable'] = 'Daten müssen in dem Format Tag.Monat sein!';

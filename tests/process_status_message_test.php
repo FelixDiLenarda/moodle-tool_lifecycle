@@ -22,7 +22,6 @@
  * @copyright  2018 Tamara Gunkel, Jan Dageforde WWU
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-defined('MOODLE_INTERNAL') || die();
 
 use tool_lifecycle\action;
 use tool_lifecycle\local\entity\workflow;
@@ -54,7 +53,7 @@ class tool_lifecycle_process_status_message_testcase extends \advanced_testcase 
      * Setup the testcase.
      * @throws coding_exception
      */
-    public function setUp() {
+    public function setUp() : void {
         global $USER;
 
         // We do not need a sesskey check in theses tests.

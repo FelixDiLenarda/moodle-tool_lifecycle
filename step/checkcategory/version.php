@@ -24,7 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version  = 2019121300;
+$plugin->version  = 2021100500;
 $plugin->component = 'lifecyclestep_checkcategory';
 $plugin->dependencies = [
     'lifecycletrigger_matchingcategories' => 2019121300,

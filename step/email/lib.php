@@ -150,6 +150,27 @@ class email extends libbase {
         $patterns = array();
         $replacements = array();
 
+        // ISIS: Replacements 6.4.2022
+        $patterns [] = '##isis-archive-courses##';
+        $courses = $mailentries;
+        $coursesstring = '';
+        $coursesstring .= $this->parse_course_isis(array_pop($courses)->courseid);
+        foreach ($courses as $entry) {
+            $coursesstring .= "\n" . $this->parse_course_isis($entry->courseid);
+        }
+        $replacements [] = $coursesstring;
+
+        $patterns [] = '##isis-archive-courses-html##';
+        $courses = $mailentries;
+        $coursestabledata = array();
+        foreach ($courses as $entry) {
+            $coursestabledata[$entry->courseid] = $this->parse_course_row_data_isis($entry->courseid);
+        }
+        $coursestable = new \html_table();
+        $coursestable->data = $coursestabledata;
+        $replacements [] = \html_writer::table($coursestable);
+
+
         // Replaces firstname of the user.
         $patterns [] = '##firstname##';
         $replacements [] = $user->firstname;
@@ -205,6 +226,20 @@ class email extends libbase {
     }
 
     /**
+     * Parses a course for the non html format.
+     * @param int $courseid id of the course
+     * @return string
+     * @throws \dml_exception
+     */
+    private function parse_course_isis($courseid) {
+        $course = get_course($courseid);
+        $url = new \moodle_url('/local/assessment_archive/index.php', ['courseid' => $courseid]);
+        $result = $course->fullname . "\n";
+        $result .= $url->out(false);
+        return $result;
+    }
+
+    /**
      * Parses a course for the html format.
      * @param int $courseid id of the course
      * @return array column of a course
@@ -217,15 +252,27 @@ class email extends libbase {
     }
 
     /**
+     * Parses a course for the html format.
+     * @param int $courseid id of the course
+     * @return array column of a course
+     * @throws \dml_exception
+     */
+    private function parse_course_row_data_isis($courseid) {
+        $course = get_course($courseid);
+        $url = new \moodle_url('/local/assessment_archive/index.php', ['courseid' => $courseid]);
+        return array(\html_writer::link($url, $course->fullname));
+    }
+
+    /**
      * Defines which settings each instance of the subplugin offers for the user to define.
      * @return instance_setting[] containing settings keys and PARAM_TYPES
      */
     public function instance_settings() {
         return array(
-            new instance_setting('responsetimeout', PARAM_INT),
-            new instance_setting('subject', PARAM_TEXT),
-            new instance_setting('content', PARAM_RAW),
-            new instance_setting('contenthtml', PARAM_RAW),
+            new instance_setting('responsetimeout', PARAM_INT, false),
+            new instance_setting('subject', PARAM_TEXT, true),
+            new instance_setting('content', PARAM_RAW, true),
+            new instance_setting('contenthtml', PARAM_RAW, true),
         );
     }
 
@@ -270,6 +317,7 @@ class email extends libbase {
      * @param array $settings array containing the settings from the db.
      */
     public function extend_add_instance_form_definition_after_data($mform, $settings) {
-        $mform->setDefault('contenthtml', array('text' => $settings['contenthtml'], 'format' => FORMAT_HTML));
+        $mform->setDefault('contenthtml',
+                array('text' => isset($settings['contenthtml']) ? $settings['contenthtml'] : '', 'format' => FORMAT_HTML));
     }
 }

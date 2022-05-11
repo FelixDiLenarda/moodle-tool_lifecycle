@@ -22,7 +22,7 @@
  * @copyright  2017 Tobias Reischmann WWU
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace tool_lifecycle\trigger;
+namespace lifecycletrigger_categories;
 
 use tool_lifecycle\local\entity\trigger_subplugin;
 use tool_lifecycle\processor;
@@ -41,7 +41,7 @@ require_once(__DIR__ . '/generator/lib.php');
  * @copyright  2017 Tobias Reischmann WWU
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class tool_lifecycle_trigger_categories_testcase extends \advanced_testcase {
+class trigger_test extends \advanced_testcase {
 
     /** @var trigger_subplugin $excludetrigger Trigger instance that excludes a category. */
     private $excludetrigger;
@@ -60,7 +60,7 @@ class tool_lifecycle_trigger_categories_testcase extends \advanced_testcase {
      * Setup the testcase.
      * @throws \moodle_exception
      */
-    public function setUp() {
+    public function setUp() : void {
         $this->resetAfterTest(true);
         $this->setAdminUser();
 

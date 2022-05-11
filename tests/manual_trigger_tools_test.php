@@ -22,7 +22,6 @@
  * @copyright  2018 Tobias Reischmann, Jan Dageforde WWU
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-defined('MOODLE_INTERNAL') || die();
 
 use tool_lifecycle\action;
 use tool_lifecycle\local\entity\workflow;
@@ -62,7 +61,7 @@ class tool_lifecycle_manual_trigger_tools_testcase extends \advanced_testcase {
      * Setup the testcase.
      * @throws coding_exception
      */
-    public function setUp() {
+    public function setUp() : void {
         global $USER;
         $this->resetAfterTest(true);
         $generator = $this->getDataGenerator()->get_plugin_generator('tool_lifecycle');

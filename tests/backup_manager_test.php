@@ -22,7 +22,6 @@
  * @copyright  2017 Tobias Reischmann WWU
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-defined('MOODLE_INTERNAL') || die();
 
 use tool_lifecycle\local\manager\backup_manager;
 
@@ -42,7 +41,7 @@ class tool_lifecycle_backup_manager_testcase extends \advanced_testcase {
     /**
      * Setup the testcase.
      */
-    public function setUp() {
+    public function setUp() : void {
         $this->resetAfterTest(false);
         $this->course = $this->getDataGenerator()->create_course();
     }
