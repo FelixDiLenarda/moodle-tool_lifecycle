@@ -86,27 +86,25 @@ class checktrigger extends libbase {
                 if ( $DB->record_exists_sql($sql, $params)) {
                     $response = $lib->check_course($course, $trigger->id);
                     if ($response == trigger_response::next()) {
-                        mtrace($course->id . ' NEXT -> ROLLBACK');
+                        mtrace('Course: ' . $course->id . ' NEXT -> ROLLBACK');
                         return step_response::rollback();
                     }
                     if ($response == trigger_response::exclude()) {
-                        mtrace($course->id . ' EXCLUDE -> ROLLBACK');
+                        mtrace('Course: ' . $course->id . ' EXCLUDE -> ROLLBACK');
                         return step_response::rollback();
                     }
                     if ($response == trigger_response::trigger()) {
-                        mtrace($course->id . ' TRIGGER -> PROCEED');
+                        mtrace('Course: ' . $course->id . ' TRIGGER -> PROCEED');
                         return step_response::proceed();
                     }
                 }
                 else {
-                    mtrace('ROLLBACK');
+                    mtrace('Course: ' . $course->id . ' ROLLBACK');
                     return step_response::rollback();
                 }
             }
-            else {
-                throw new \moodle_exception('The following Trigger to check was not found in the workflow: \''. $triggertocheck . '\' WORKFLOW ABORTED');
-            }
         }
+        throw new \moodle_exception('The following Trigger to check was not found in the workflow: \''. $triggertocheck . '\' WORKFLOW ABORTED');
     }
 
     /**
