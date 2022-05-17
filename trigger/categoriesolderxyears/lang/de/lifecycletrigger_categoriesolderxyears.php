@@ -22,5 +22,5 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Kurskategorie älter als X Jahre - Trigger';
-$string['years'] = 'Triggert Kurse, welche sich in Unterkategorien des Archivbereichs befinden und älter als X Jahre sind';
+$string['pluginname'] = 'Kurskategorie älter als X Semester - Trigger';
+$string['years'] = 'Triggert Kurse, welche sich in Unterkategorien des Archivbereichs befinden und älter als X Semester sind';

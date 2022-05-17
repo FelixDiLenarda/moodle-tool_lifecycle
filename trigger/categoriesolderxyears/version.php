@@ -24,5 +24,5 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version  = 2022031000;
+$plugin->version  = 2022051701;
 $plugin->component = 'lifecycletrigger_categoriesolderxyears';

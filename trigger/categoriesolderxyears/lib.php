@@ -65,37 +65,36 @@ class categoriesolderxyears extends base_automatic {
      */
     static public function get_category_names($triggerid) {
         // get setting for how many years in the past the trigger should start to trigger and convert in year
-        $catsolderthanyears = settings_manager::get_settings($triggerid, settings_type::TRIGGER)['years'];
+        $olderthansemester = settings_manager::get_settings($triggerid, settings_type::TRIGGER)['semester'];
         // mtrace("\n Setting: only courses older " . $catsolderthanyears . " years \n");
-        $xyearago = date("y")-$catsolderthanyears;
+        $thisyear = date("y");
 
         // look max five years back in time because the courses are deleted after 5 yers anyway
         $fiveyearago = date("y") - 5;
-        $categorynames = [];
+        $categorynames = []; // will always be an array of 12 elements which represent the last 12 semester
         // check if Workflow runs in  SS or WS
         if (date("m")>3 && date("m")<10) {
             // SS
-            for ($x = $xyearago; $x >= $fiveyearago; $x--) {
+            for ($x = $thisyear; $x >= $fiveyearago; $x--) {
                 $categorynames[] = "WS" . ($x - 1) . "/" . $x;
                 $categorynames[] = "SS" . ($x - 1);
             }
         } elseif(date("m")<4) {
             // WS beginning year
-            for ($x = ($xyearago-1); $x >= $fiveyearago; $x--) {
+            for ($x = ($thisyear-1); $x >= $fiveyearago - 1; $x--) {
                 $categorynames[] = "SS" . $x;
                 $categorynames[] = "WS" . ($x - 1) . "/" . $x;
             }
         } else {
             // WS ending year
-            for ($x = $xyearago; $x >= $fiveyearago; $x--) {
+            for ($x = $thisyear; $x >= $fiveyearago; $x--) {
                 $categorynames[] = "SS" . $x;
                 $categorynames[] = "WS" . ($x - 1) . "/" . $x;
             }
         }
-
-        return $categorynames;
+        $wantedcategorynames = array_slice($categorynames, $olderthansemester);
+        return $wantedcategorynames;
     }
-
     /**
      * Return sql sniplet for including the courses belonging to specific categories
      *
@@ -136,7 +135,7 @@ class categoriesolderxyears extends base_automatic {
      * @return instance_setting[] containing settings keys and PARAM_TYPES
      */
     public function instance_settings() {
-        return array(new instance_setting('years', PARAM_INT));
+        return array(new instance_setting('semester', PARAM_INT));
     }
     /**
      * This method can be overriden, to add form elements to the form_step_instance.
@@ -146,10 +145,10 @@ class categoriesolderxyears extends base_automatic {
      * @throws \dml_exception
      */
     public function extend_add_instance_form_definition($mform) {
-        $yearvaluearray = array_slice(range(0,4), 1, 4, true);
-        $mform->addElement('select', 'years',
-            get_string('years', 'lifecycletrigger_categoriesolderxyears'), $yearvaluearray);
-        $mform->setType('years', PARAM_INT);
+        $yearvaluearray = array_slice(range(0,9), 1, 9, true);
+        $mform->addElement('select', 'semester',
+            get_string('semester', 'lifecycletrigger_categoriesolderxyears'), $yearvaluearray);
+        $mform->setType('semester', PARAM_INT);
 
     }
 }
